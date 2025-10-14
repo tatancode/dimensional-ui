@@ -43,7 +43,7 @@
         label="Show Logo"
         type="boolean"
         :model-value="!!props.logo"
-        @update:model-value="(value) => updateProp('logo', value ? '/logo.svg' : '')"
+        @update:model-value="(value) => updateProp('logo', value ? '/dimensional-ui-logo.png' : '')"
       />
       
       <PropControl
@@ -87,7 +87,7 @@
         <div class="navbar-container">
           <DNavbar
             :items="basicNavItems"
-            logo="/logo.svg"
+            logo="/dimensional-ui-logo.png"
             logo-alt="Company Logo"
             current-path="/about"
             @navigate="handleNavigate"
@@ -137,7 +137,7 @@
           <div class="navbar-container">
             <DNavbar
               :items="extendedNavItems"
-              logo="/logo.svg"
+              logo="/dimensional-ui-logo.png"
               responsive
               current-path="/services"
               @navigate="handleNavigate"
@@ -377,7 +377,7 @@ export default {
 <!-- With logo and actions -->
 <DNavbar
   :items="navItems"
-  logo="/logo.svg"
+  logo="/dimensional-ui-logo.png"
   current-path="/about"
   @navigate="handleNavigate"
 >

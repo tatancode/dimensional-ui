@@ -112,14 +112,14 @@ describe('DNavbar', () => {
       wrapper = mount(DNavbar, {
         props: { 
           items: mockItems,
-          logo: '/logo.png',
+          logo: '/dimensional-ui-logo.png',
           logoAlt: 'Company Logo'
         }
       })
 
       expect(wrapper.find('.d-navbar__logo').exists()).toBe(true)
       expect(wrapper.find('.d-navbar__logo-image').exists()).toBe(true)
-      expect(wrapper.find('.d-navbar__logo-image').attributes('src')).toBe('/logo.png')
+      expect(wrapper.find('.d-navbar__logo-image').attributes('src')).toBe('/dimensional-ui-logo.png')
       expect(wrapper.find('.d-navbar__logo-image').attributes('alt')).toBe('Company Logo')
     })
 

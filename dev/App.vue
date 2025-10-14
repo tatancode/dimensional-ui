@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header class="playground-header">
-      <h1>🎨 Dimensional UI - Development Playground</h1>
+      <h1><img src="/dimensional-ui-logo.png" alt="Dimensional UI Logo" class="logo-icon"> Dimensional UI - Development Playground</h1>
       <p>Interactive component showcase with live prop controls</p>
     </header>
 
@@ -121,6 +121,15 @@ export default {
   font-weight: 700;
   color: #000;
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+  height: 10.5rem;
+  width: auto;
 }
 
 .playground-header p {

@@ -104,7 +104,7 @@
         label="Show Logo"
         type="boolean"
         :model-value="!!props.logo"
-        @update:model-value="(value) => updateProp('logo', value ? '/logo.svg' : '')"
+        @update:model-value="(value) => updateProp('logo', value ? '/dimensional-ui-logo.png' : '')"
       />
       
       <PropControl
@@ -253,7 +253,7 @@
             <DSideNavbar
               :items="basicNavItems"
               :is-open="variantStates.headerFooter"
-              logo="/logo.svg"
+              logo="/dimensional-ui-logo.png"
               current-path="/services"
               @navigate="handleVariantNavigate"
               @close="() => variantStates.headerFooter = false"
@@ -360,7 +360,7 @@
             <DSideNavbar
               :items="mobileNavItems"
               :is-open="variantStates.mobile"
-              logo="/logo.svg"
+              logo="/dimensional-ui-logo.png"
               @navigate="handleVariantNavigate"
               @close="() => variantStates.mobile = false"
               @overlay-click="() => variantStates.mobile = false"
@@ -602,7 +602,7 @@ export default {
 <DSideNavbar
   :items="navItems"
   :is-open="isOpen"
-  logo="/logo.svg"
+  logo="/dimensional-ui-logo.png"
   position="left"
   width="300px"
   @navigate="handleNavigate"
