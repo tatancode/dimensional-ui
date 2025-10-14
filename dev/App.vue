@@ -40,6 +40,8 @@ import { ref, computed } from 'vue'
 // Import showcase components
 import DButtonShowcase from './showcases/DButtonShowcase.vue'
 import DNavbarShowcase from './showcases/DNavbarShowcase.vue'
+import DSideNavbarShowcase from './showcases/DSideNavbarShowcase.vue'
+import DHamburgerButtonShowcase from './showcases/DHamburgerButtonShowcase.vue'
 import DDropdownShowcase from './showcases/DDropdownShowcase.vue'
 import DCardShowcase from './showcases/DCardShowcase.vue'
 import DInputShowcase from './showcases/DInputShowcase.vue'
@@ -51,6 +53,8 @@ export default {
     // Component showcases
     DButtonShowcase,
     DNavbarShowcase,
+    DSideNavbarShowcase,
+    DHamburgerButtonShowcase,
     DDropdownShowcase,
     DCardShowcase,
     DInputShowcase,
@@ -62,6 +66,8 @@ export default {
     const components = [
       { name: 'DButton', label: 'Button', showcase: 'DButtonShowcase' },
       { name: 'DNavbar', label: 'Navbar', showcase: 'DNavbarShowcase' },
+      { name: 'DSideNavbar', label: 'Side Navbar', showcase: 'DSideNavbarShowcase' },
+      { name: 'DHamburgerButton', label: 'Hamburger Button', showcase: 'DHamburgerButtonShowcase' },
       { name: 'DDropdown', label: 'Dropdown', showcase: 'DDropdownShowcase' },
       { name: 'DCard', label: 'Card', showcase: 'DCardShowcase' },
       { name: 'DInput', label: 'Input', showcase: 'DInputShowcase' },

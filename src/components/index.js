@@ -1,6 +1,8 @@
 // Component exports
 export { default as DButton } from './DButton.vue'
 export { default as DNavbar } from './DNavbar.vue'
+export { default as DSideNavbar } from './DSideNavbar.vue'
+export { default as DHamburgerButton } from './DHamburgerButton.vue'
 
 // Future component exports:
 // export { default as DDropdown } from './DDropdown.vue'
