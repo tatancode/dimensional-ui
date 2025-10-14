@@ -16,7 +16,8 @@
   
   /* Interactive state shadows */
   --d-shadow-hover: 2px 2px 0px #000000;
-  --d-shadow-active: 0px 0px 0px #000000;
+  --d-shadow-active: 3px 3px 0px #000000;
+  --d-shadow-none: none;
   
   /* Border Radius - Rounded corners for playful aesthetic */
   --d-radius-sm: 8px;

@@ -3,6 +3,11 @@
 // Theme system composable
 export { useTheme } from './useTheme.js'
 
-// Future composable exports:
-// export { useShadowEffects } from './useShadowEffects'
-// export { useInteractiveStates } from './useInteractiveStates'
+// Shadow effects composable
+export { useShadowEffects } from './useShadowEffects.js'
+
+// Interactive states composable
+export { useInteractiveStates } from './useInteractiveStates.js'
+
+// Shadow utilities
+export { useShadowUtils } from './useShadowUtils.js'

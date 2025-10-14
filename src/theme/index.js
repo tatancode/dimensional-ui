@@ -4,6 +4,7 @@
 // CSS imports - these will be bundled with the library
 import './tokens.css'
 import './base.css'
+import './utilities.css'
 
 // Theme composable
 export { useTheme } from '../composables/useTheme.js'
