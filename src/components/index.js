@@ -5,8 +5,8 @@ export { default as DSideNavbar } from './DSideNavbar.vue'
 export { default as DHamburgerButton } from './DHamburgerButton.vue'
 export { default as DDropdown } from './DDropdown.vue'
 export { default as DDropdownItem } from './DDropdownItem.vue'
+export { default as DCard } from './DCard.vue'
+export { default as DInput } from './DInput.vue'
 
 // Future component exports:
-// export { default as DCard } from './DCard.vue'
-// export { default as DInput } from './DInput.vue'
 // export { default as DLayout } from './DLayout.vue'
