@@ -1,8 +1,7 @@
 // Component exports
-// Components will be added in later tasks
+export { default as DButton } from './DButton.vue'
 
 // Future component exports:
-// export { default as DButton } from './DButton.vue'
 // export { default as DNavbar } from './DNavbar.vue'
 // export { default as DDropdown } from './DDropdown.vue'
 // export { default as DCard } from './DCard.vue'
