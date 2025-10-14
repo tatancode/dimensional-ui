@@ -1,4 +1,4 @@
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, unref } from 'vue'
 import { useShadowEffects } from './useShadowEffects.js'
 import { useTheme } from './useTheme.js'
 
@@ -30,13 +30,16 @@ export function useInteractiveStates(options = {}) {
   /**
    * Combined interactive state object
    */
-  const interactiveState = computed(() => ({
-    isHovered: isHovered.value && !disabled,
-    isPressed: isPressed.value && !disabled,
-    isFocused: isFocused.value && !disabled,
-    isActive: isActive.value && !disabled,
-    disabled
-  }))
+  const interactiveState = computed(() => {
+    const isDisabled = unref(disabled)
+    return {
+      isHovered: isHovered.value && !isDisabled,
+      isPressed: isPressed.value && !isDisabled,
+      isFocused: isFocused.value && !isDisabled,
+      isActive: isActive.value && !isDisabled,
+      disabled: isDisabled
+    }
+  })
   
   /**
    * Check if element is in any interactive state
@@ -95,23 +98,30 @@ export function useInteractiveStates(options = {}) {
    * Event handlers for mouse interactions
    */
   const handleMouseEnter = () => {
-    if (!trackHover || disabled) return
+    if (!trackHover || unref(disabled)) return
     isHovered.value = true
   }
   
   const handleMouseLeave = () => {
-    if (!trackHover || disabled) return
+    if (!trackHover || unref(disabled)) return
     isHovered.value = false
     isPressed.value = false // Reset pressed state on leave
   }
   
   const handleMouseDown = () => {
-    if (!trackActive || disabled) return
+    if (!trackActive || unref(disabled)) return
     isPressed.value = true
+    
+    // Listen for mouseup on document to handle cases where user releases outside button
+    const handleGlobalMouseUp = () => {
+      isPressed.value = false
+      document.removeEventListener('mouseup', handleGlobalMouseUp)
+    }
+    document.addEventListener('mouseup', handleGlobalMouseUp)
   }
   
   const handleMouseUp = () => {
-    if (!trackActive || disabled) return
+    if (!trackActive || unref(disabled)) return
     isPressed.value = false
   }
   
@@ -119,12 +129,12 @@ export function useInteractiveStates(options = {}) {
    * Event handlers for focus interactions
    */
   const handleFocus = () => {
-    if (!trackFocus || disabled) return
+    if (!trackFocus || unref(disabled)) return
     isFocused.value = true
   }
   
   const handleBlur = () => {
-    if (!trackFocus || disabled) return
+    if (!trackFocus || unref(disabled)) return
     isFocused.value = false
   }
   
@@ -132,7 +142,7 @@ export function useInteractiveStates(options = {}) {
    * Event handlers for keyboard interactions
    */
   const handleKeyDown = (event) => {
-    if (!trackActive || disabled) return
+    if (!trackActive || unref(disabled)) return
     
     // Treat Enter and Space as press for accessibility
     if (event.key === 'Enter' || event.key === ' ') {
@@ -142,7 +152,7 @@ export function useInteractiveStates(options = {}) {
   }
   
   const handleKeyUp = (event) => {
-    if (!trackActive || disabled) return
+    if (!trackActive || unref(disabled)) return
     
     if (event.key === 'Enter' || event.key === ' ') {
       isPressed.value = false
@@ -173,20 +183,20 @@ export function useInteractiveStates(options = {}) {
     const listeners = {}
     
     if (trackHover) {
-      listeners.onMouseenter = handleMouseEnter
-      listeners.onMouseleave = handleMouseLeave
+      listeners.mouseenter = handleMouseEnter
+      listeners.mouseleave = handleMouseLeave
     }
     
     if (trackActive) {
-      listeners.onMousedown = handleMouseDown
-      listeners.onMouseup = handleMouseUp
-      listeners.onKeydown = handleKeyDown
-      listeners.onKeyup = handleKeyUp
+      listeners.mousedown = handleMouseDown
+      listeners.mouseup = handleMouseUp
+      listeners.keydown = handleKeyDown
+      listeners.keyup = handleKeyUp
     }
     
     if (trackFocus) {
-      listeners.onFocus = handleFocus
-      listeners.onBlur = handleBlur
+      listeners.focus = handleFocus
+      listeners.blur = handleBlur
     }
     
     return listeners
@@ -196,13 +206,14 @@ export function useInteractiveStates(options = {}) {
    * Get accessibility attributes
    */
   const accessibilityAttrs = computed(() => {
+    const isDisabled = unref(disabled)
     const attrs = {}
     
     if (trackFocus) {
-      attrs.tabindex = disabled ? -1 : 0
+      attrs.tabindex = isDisabled ? -1 : 0
     }
     
-    if (disabled) {
+    if (isDisabled) {
       attrs['aria-disabled'] = 'true'
     }
     
