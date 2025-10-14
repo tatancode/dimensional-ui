@@ -1,7 +1,8 @@
 // Composable exports
-// Composables will be added in later tasks
+
+// Theme system composable
+export { useTheme } from './useTheme.js'
 
 // Future composable exports:
-// export { useTheme } from './useTheme'
 // export { useShadowEffects } from './useShadowEffects'
 // export { useInteractiveStates } from './useInteractiveStates'
